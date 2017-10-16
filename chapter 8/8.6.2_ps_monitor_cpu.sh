@@ -1,13 +1,13 @@
-#!/usr/bin/env bash
-SECC=3600
+#!/bin/bash
+SECC=60
 UNIT_TIME=60
 
 STEPS=$(( ${SECC}/${UNIT_TIME} ))
-echo 'Watching CPU usage...';
-for((i=0;i<STEPS;i++))
+echo 'Watching CPU usage...'
+for(( i=0;i<STEPS;i++ ))
 do
   ps -eo comm,pcpu | tail -n +2 >> /tmp/cpu_usage.$$
-  sleep 1
+  sleep $UNIT_TIME
 done
 
 echo
